@@ -15,11 +15,12 @@ import javax.swing.ImageIcon;
  */
 public class Bulldozer extends Car {
 	Image img;
-	ImageIcon ic = new ImageIcon(img);
+	ImageIcon ic;
 	public Bulldozer(double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc) {
 		super(spe, dir, col, lan, saf, loc);
 		try {
 			img = ImageIO.read(new File(""));
+			ic = new ImageIcon(img);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
