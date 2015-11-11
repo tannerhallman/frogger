@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Shape;
 
 /**
  * This is the abstract GameObject that is the parent for most objects in the game.
@@ -24,8 +25,7 @@ public abstract class GameObject {
 	 * @param saf if the object is safe to land on or not.
 	 * @param loc the location of the object.
 	 */
-	public GameObject (Image img, double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc){
-		this.image = img;
+	public GameObject (double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc){
 		this.speed = spe;
 		this.color = col;
 		this.lane = lan;
@@ -40,8 +40,7 @@ public abstract class GameObject {
 	 * @param lan
 	 * @param loc
 	 */
-	public GameObject (Shape sha, double spe, String dir, int lan, TwoDPoint loc) {
-		this.shape = sha;
+	public GameObject (double spe, String dir, int lan, TwoDPoint loc) {
 		this.speed = spe;
 		this.lane = lan;
 		this.safe = true;

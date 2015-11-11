@@ -3,8 +3,8 @@ import java.awt.Image;
 
 public class Car extends GameObject {
 	
-	public Car(Image img, double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc) {
-		super(img, spe, dir, col, lan, saf, loc);
+	public Car(double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc) {
+		super(spe, dir, col, lan, saf, loc);
 	}
 
 	//added some shit here. svn test
