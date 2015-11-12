@@ -1,6 +1,9 @@
+import java.awt.Color;
+
 import javax.swing.JFrame;
 
 public class GameWindow extends JFrame {
+	
 	public GameWindow(){
 		setTitle("Frogger");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

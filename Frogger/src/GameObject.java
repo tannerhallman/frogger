@@ -1,6 +1,4 @@
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Shape;
+import java.awt.image.BufferedImage;
 
 /**
  * This is the abstract GameObject that is the parent for most objects in the game.
@@ -9,42 +7,38 @@ import java.awt.Shape;
  */
 
 public abstract class GameObject {
-	public double speed; //the speed of the object
-	public Color color; //the color of the object
-	public int lane; // the lane or row the object is in.
-	public boolean safe; //true by default
-	public TwoDPoint location;
-	public Image image; //the shape/image of the image
-	
+	private double speed; //the speed of the object
+	private int row; // the lane or row the object is in.
+	private int col; // the column the object is in
+	private boolean safe; //true by default
+	private BufferedImage image; //the image of the object
+	private int objectSeperatorDistance; //the distance between itself and another object "behind" it
+
 	/**
 	 * This is the full constructor that allows you to explicitly assign all values.
+	 * @param img the image of the object.
 	 * @param spe the speed of the object.
 	 * @param dir the direction.
-	 * @param col the color.
-	 * @param lan the lane.
+	 * @param rowOfObject the lane/row.
+	 * @param colOfObject the column.
 	 * @param saf if the object is safe to land on or not.
-	 * @param loc the location of the object.
 	 */
-	public GameObject (double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc){
+	public GameObject (BufferedImage img, double spe, String dir, int rowOfObject, int colOfObject, int objectSD){
+		this.image = img;
 		this.speed = spe;
-		this.color = col;
-		this.lane = lan;
-		this.safe = saf;
-		this.location = loc;
+		this.row = rowOfObject; //could also be Y coord depending on what value is passed
+		this.col = colOfObject; //could also be X coord depending on what value is passed
+		this.safe = true; // true by default
+		this.objectSeperatorDistance = img.getWidth(); //default is width of itself so no overlapping objects
 	}
 	
-	/**
-	 * @param sha
-	 * @param spe
-	 * @param dir
-	 * @param lan
-	 * @param loc
-	 */
-	public GameObject (double spe, String dir, int lan, TwoDPoint loc) {
+	public GameObject (BufferedImage img, double spe, String dir, int r, int c){
+		this.image = img;
 		this.speed = spe;
-		this.lane = lan;
-		this.safe = true;
-		this.location = loc;
+		this.row = r;
+		this.col = c;
+		this.safe = true; // true by default
+		objectSeperatorDistance = 2; //2 pixels by default
 	}
 	
 	/**
@@ -56,19 +50,14 @@ public abstract class GameObject {
 	 * 
 	 */
 	public abstract void collision();
-
-	/**
-	 * @return
-	 */
-	public Image getImage() {
+	
+	
+	public BufferedImage getImage() {
 		return image;
 	}
 
-	/**
-	 * @param shape
-	 */
-	public void setImage(Image img) {
-		this.image = img;
+	public void setImage(BufferedImage newImage) {
+		this.image = newImage;
 	}
 
 	/**
@@ -88,29 +77,29 @@ public abstract class GameObject {
 	/**
 	 * @return
 	 */
-	public Color getColor() {
-		return color;
+	public int getRow() {
+		return row;
 	}
 
 	/**
-	 * @param color
+	 * @param newRow
 	 */
-	public void setColor(Color color) {
-		this.color = color;
+	public void setRow(int newRow) {
+		this.row = newRow;
 	}
-
+	
 	/**
 	 * @return
 	 */
-	public int getLane() {
-		return lane;
+	public int getCol() {
+		return col;
 	}
 
 	/**
-	 * @param lane
+	 * @param newCol
 	 */
-	public void setLane(int lane) {
-		this.lane = lane;
+	public void setCol(int newCol) {
+		this.row = newCol;
 	}
 
 	/**
@@ -127,19 +116,12 @@ public abstract class GameObject {
 		this.safe = safe;
 	}
 
-	/**
-	 * @return
-	 */
-	public TwoDPoint getLocation() {
-		return location;
+	public int getObjectSeperatorDistance() {
+		return objectSeperatorDistance;
 	}
 
-	/**
-	 * @param location
-	 */
-	public void setLocation(TwoDPoint location) {
-		this.location = location;
+	public void setObjectSeperatorDistance(int OSD) {
+		this.objectSeperatorDistance = OSD;
 	}
-	
 	
 }

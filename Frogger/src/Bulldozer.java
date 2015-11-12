@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Shape;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,18 +14,10 @@ import javax.swing.ImageIcon;
  * @author th
  *
  */
-public class Bulldozer extends Car {
-	Image img;
-	ImageIcon ic;
-	public Bulldozer(double spe, String dir, Color col, int lan, boolean saf, TwoDPoint loc) {
-		super(spe, dir, col, lan, saf, loc);
-		try {
-			img = ImageIO.read(new File(""));
-			ic = new ImageIcon(img);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} //TODO replace quotes
+public class Bulldozer extends GameObject {
+
+	public Bulldozer(BufferedImage img, double spe, String dir, int r, int c) {
+		super(img, spe, dir, r, c);
 		
 	}
 
