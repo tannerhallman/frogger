@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 
 /**
  * Bulldozer.
- * A
+ * 
  * @author th
  *
  */
