@@ -14,27 +14,10 @@ public class Frog extends GameObject {
 	/**
 	 * 
 	 */
-	public Frog(BufferedImage img, double spe, String dir, int row, int col, boolean activeFrog) {
+	public Frog(BufferedImage img, int spe, String dir, int row, int col) {
 		super(img, spe, dir, row, col);
-		this.isFrogActive = activeFrog;
-	}
-
-	/* (non-Javadoc)
-	 * @see GameObject#move()
-	 */
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see GameObject#collision()
-	 */
-	@Override
-	public void collision() {
-		// TODO Auto-generated method stub
-
+		this.isFrogActive = true;
+		this.setMoveWithoutInput(false);
 	}
 
 }

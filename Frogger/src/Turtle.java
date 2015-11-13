@@ -13,7 +13,7 @@ public class Turtle extends GameObject {
 	/**
 	 * 
 	 */
-	public Turtle(BufferedImage img, double spe, String dir, int r, int c) {
+	public Turtle(BufferedImage img, int spe, String dir, int r, int c) {
 		super(img, spe, dir, r, c);
 		
 	}

@@ -16,20 +16,8 @@ public class RaceCar extends GameObject {
 	 * 
 	 */
 
-	public RaceCar(BufferedImage img, double spe, String dir, int r, int c) {
+	public RaceCar(BufferedImage img, int spe, String dir, int r, int c) {
 		super(img, spe, dir, r, c);
-		
-	}
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void collision() {
-		// TODO Auto-generated method stub
 		
 	}
 

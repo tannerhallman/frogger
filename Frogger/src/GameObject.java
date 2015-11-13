@@ -6,13 +6,39 @@ import java.awt.image.BufferedImage;
  *
  */
 
-public abstract class GameObject {
-	private double speed; //the speed of the object
+public class GameObject {
+	private int speed; //the speed of the object , 1 - 10 pixels/second
 	private int row; // the lane or row the object is in.
 	private int col; // the column the object is in
 	private boolean safe; //true by default
 	private BufferedImage image; //the image of the object
-	private int objectSeperatorDistance; //the distance between itself and another object "behind" it
+	private int width;
+	private String direction;
+	private boolean moveWithoutInput = true;
+	
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public boolean isMoveWithoutInput() {
+		return moveWithoutInput;
+	}
+
+	public void setMoveWithoutInput(boolean moveWithoutInput) {
+		this.moveWithoutInput = moveWithoutInput;
+	}
 
 	/**
 	 * This is the full constructor that allows you to explicitly assign all values.
@@ -23,33 +49,36 @@ public abstract class GameObject {
 	 * @param colOfObject the column.
 	 * @param saf if the object is safe to land on or not.
 	 */
-	public GameObject (BufferedImage img, double spe, String dir, int rowOfObject, int colOfObject, int objectSD){
+	public GameObject (BufferedImage img, int spe, String dir, int rowOfObject, int colOfObject){
 		this.image = img;
 		this.speed = spe;
-		this.row = rowOfObject; //could also be Y coord depending on what value is passed
-		this.col = colOfObject; //could also be X coord depending on what value is passed
+		this.row = rowOfObject; // Y value
+		this.col = colOfObject; // X value
 		this.safe = true; // true by default
-		this.objectSeperatorDistance = img.getWidth(); //default is width of itself so no overlapping objects
-	}
-	
-	public GameObject (BufferedImage img, double spe, String dir, int r, int c){
-		this.image = img;
-		this.speed = spe;
-		this.row = r;
-		this.col = c;
-		this.safe = true; // true by default
-		objectSeperatorDistance = 2; //2 pixels by default
+		this.direction = dir;
 	}
 	
 	/**
 	 * 
 	 */
-	public abstract void move();
+	public void move(){
+		if (direction.equalsIgnoreCase("East")){
+			col += speed;
+		} else if (direction.equalsIgnoreCase("West")){
+			col -= speed;
+		} else if (direction.equalsIgnoreCase("North")){
+			row += speed;
+		} else if (direction.equalsIgnoreCase("South")){
+			row -= speed;
+		}
+	}
 	
 	/**
 	 * 
 	 */
-	public abstract void collision();
+	public void collision(){
+		
+	}
 	
 	
 	public BufferedImage getImage() {
@@ -70,7 +99,7 @@ public abstract class GameObject {
 	/**
 	 * @param speed
 	 */
-	public void setSpeed(double speed) {
+	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 
@@ -114,14 +143,6 @@ public abstract class GameObject {
 	 */
 	public void setSafe(boolean safe) {
 		this.safe = safe;
-	}
-
-	public int getObjectSeperatorDistance() {
-		return objectSeperatorDistance;
-	}
-
-	public void setObjectSeperatorDistance(int OSD) {
-		this.objectSeperatorDistance = OSD;
 	}
 	
 }

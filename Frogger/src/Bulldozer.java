@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  */
 public class Bulldozer extends GameObject {
 
-	public Bulldozer(BufferedImage img, double spe, String dir, int r, int c) {
+	public Bulldozer(BufferedImage img, int spe, String dir, int r, int c) {
 		super(img, spe, dir, r, c);
 		
 	}

@@ -18,7 +18,7 @@ public class Life extends GameObject {
 	private int objectSeperatorDistance; //the distance between itself and another object "behind" it
 	
 
-	public Life(BufferedImage img, double spe, String dir, int rowOfObject, int colOfObject, int objectSD) {
+	public Life(BufferedImage img, int spe, String dir, int rowOfObject, int colOfObject, int objectSD) {
 		super(img, spe, dir, rowOfObject, colOfObject, objectSD);
 		
 		this.image = img;
@@ -36,7 +36,7 @@ public class Life extends GameObject {
 	 * @param r
 	 * @param c
 	 */
-	public Life(BufferedImage img, double spe, String dir, int r, int c) {
+	public Life(BufferedImage img, int spe, String dir, int r, int c) {
 		super(img, spe, dir, r, c);
 		// TODO Auto-generated constructor stub
 	}

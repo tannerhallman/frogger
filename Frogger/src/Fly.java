@@ -17,7 +17,7 @@ public class Fly extends GameObject {
 	 * @param r
 	 * @param c
 	 */
-	public Fly(BufferedImage img, double spe, String dir, int r, int c) {
+	public Fly(BufferedImage img, int spe, String dir, int r, int c) {
 		super(img, spe, dir, r, c);
 		// TODO Auto-generated constructor stub
 	}
