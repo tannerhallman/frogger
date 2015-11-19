@@ -125,10 +125,11 @@ public class GameObject {
 	}
 
 	/**
+	 * had to change this, it was row before
 	 * @param newCol
 	 */
 	public void setCol(int newCol) {
-		this.row = newCol;
+		this.col = newCol;
 	}
 
 	/**

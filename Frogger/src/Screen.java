@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -532,8 +534,93 @@ public class Screen extends JPanel implements KeyListener, MouseInputListener{
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+	public void keyPressed(KeyEvent event) {
+
+		int keyCode = event.getKeyCode();
+		Frog playerFrog = null;
+		if (movingGameObjects.get(0) instanceof Frog) {
+			playerFrog = (Frog) movingGameObjects.get(0);
+		}
+		switch (keyCode) {
+			case KeyEvent.VK_UP:
+			// handle up
+			// go forward
+			if (playerFrog != null) {
+				// set up row and col
+				int row = playerFrog.getRow();
+				int endRow = row/40;
+				
+				if(endRow > 2){
+					endRow = endRow-1;
+					playerFrog.setRow(calculateRow(endRow));
+					playerFrog.setImage(frogSprites[0]);
+				}
+				else{
+					break;
+				}
+			}
+
+			break;
+		case KeyEvent.VK_DOWN:
+			// handle down
+			if (playerFrog != null) {
+				// set up row and col
+				int row = playerFrog.getRow();
+				int endRow = row/40;
+				
+				if(endRow <14){
+					endRow = endRow+1;
+					playerFrog.setRow(calculateCol(endRow));
+					playerFrog.setImage(frogSprites[4]);
+				}
+				
+				else{
+					break;
+				}
+			}
+
+			break;
+		case KeyEvent.VK_RIGHT:
+			if (playerFrog != null) {
+				// set up row and col
+				int col = playerFrog.getCol();
+				int endCol = col/40;
+				
+				if(endCol<11){
+					endCol = endCol+1;
+					playerFrog.setCol(calculateCol(endCol));
+					playerFrog.setImage(frogSprites[2]);
+				}
+				
+				else{
+					break;
+				}
+			}
+
+			break;
+		case KeyEvent.VK_LEFT:
+			if (playerFrog != null) {
+				// set up row and col
+				int col = playerFrog.getCol();
+				int endCol = col/40;
+				if(endCol>0){
+					endCol = endCol-1;
+					playerFrog.setCol(calculateCol(endCol));
+					playerFrog.setImage(frogSprites[6]);
+				}
+				else{
+					break;
+				}
+				
+			}
+			break;
+			
+		}
+		
+		
+		repaint();
+
+	
 		
 	}
 

@@ -19,7 +19,7 @@ public class Life extends GameObject {
 	
 
 	public Life(BufferedImage img, int spe, String dir, int rowOfObject, int colOfObject, int objectSD) {
-		super(img, spe, dir, rowOfObject, colOfObject, objectSD);
+		super(img, spe, dir, rowOfObject, colOfObject);
 		
 		this.image = img;
 		this.speed = spe;
